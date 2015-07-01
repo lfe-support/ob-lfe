@@ -1,0 +1,26 @@
+* ob-lfe
+
+org-babel functions for lfe(list flavored erlang) evaluation
+
+** options
+
+| option     | example              |
+|------------+----------------------|
+| =:session= | =:session mysession= |
+
+** examples
+
+: #+BEGIN_SRC lfe
+: (! (self) #(1 2 3))
+: #+END_SRC
+: 
+: #+RESULTS:
+: : #(1 2 3)
+: 
+: #+BEGIN_SRC lfe
+: (receive ((tuple x y z)
+:           (io:format "received ~p ~p ~p" (list x y z))))
+: #+END_SRC
+: 
+: #+RESULTS:
+: : received 1 2 3ok
