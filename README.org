@@ -7,13 +7,42 @@
 | =:session= | =:session mysession= |
 
 ** Examples
-: #+BEGIN_SRC lfe
+   :PROPERTIES:
+   :exports:  both
+   :END:
+: :PROPERTIES:
+: :exports:  both
+: :END:
+
+#+BEGIN_SRC lfe :results code
+(! (self) #(1 2 3))
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC lfe
+#(1 2 3)
+#+END_SRC
+
+: #+BEGIN_SRC lfe :results code
 : (! (self) #(1 2 3))
 : #+END_SRC
 : 
 : #+RESULTS:
-: : #(1 2 3)
-: 
+: #+BEGIN_SRC lfe
+: #(1 2 3)
+: #+END_SRC
+
+#+BEGIN_SRC lfe
+(receive
+  (`#(,x ,y ,z)
+   (io:format "received ~p ~p ~p\n"
+     (list x y z))))
+#+END_SRC
+
+#+RESULTS:
+: received 1 2 3
+: ok
+
 : #+BEGIN_SRC lfe
 : (receive
 :   (`#(,x ,y ,z)
