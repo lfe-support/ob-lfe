@@ -1,15 +1,12 @@
 * ob-lfe
+[[http://orgmode.org][Org]] [[http://orgmode.org/worg/org-contrib/babel/index.html][Babel]] functions for [[http://lfe.io][LFE]] (Lisp Flavoured Erlang) evaluation.
 
-org-babel functions for lfe(list flavored erlang) evaluation
-
-** options
-
-| option     | example              |
+** Options
+| Option     | Example              |
 |------------+----------------------|
 | =:session= | =:session mysession= |
 
-** examples
-
+** Examples
 : #+BEGIN_SRC lfe
 : (! (self) #(1 2 3))
 : #+END_SRC
@@ -18,9 +15,12 @@ org-babel functions for lfe(list flavored erlang) evaluation
 : : #(1 2 3)
 : 
 : #+BEGIN_SRC lfe
-: (receive ((tuple x y z)
-:           (io:format "received ~p ~p ~p" (list x y z))))
+: (receive
+:   (`#(,x ,y ,z)
+:    (io:format "received ~p ~p ~p\n"
+:      (list x y z))))
 : #+END_SRC
 : 
 : #+RESULTS:
-: : received 1 2 3ok
+: : received 1 2 3
+: : ok
