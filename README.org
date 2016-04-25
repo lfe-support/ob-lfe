@@ -9,16 +9,17 @@
 ** Examples
    :PROPERTIES:
    :exports:  both
+   :session:  mysession
    :END:
 : :PROPERTIES:
 : :exports:  both
+: :session:  mysession
 : :END:
 
 #+BEGIN_SRC lfe :results code
 (! (self) #(1 2 3))
 #+END_SRC
 
-#+RESULTS:
 #+BEGIN_SRC lfe
 #(1 2 3)
 #+END_SRC
@@ -39,9 +40,10 @@
      (list x y z))))
 #+END_SRC
 
-#+RESULTS:
-: received 1 2 3
-: ok
+#+BEGIN_EXAMPLE
+received 1 2 3
+ok
+#+END_EXAMPLE
 
 : #+BEGIN_SRC lfe
 : (receive
