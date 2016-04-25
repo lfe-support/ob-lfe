@@ -1,6 +1,7 @@
 ;;; ob-lfe.el --- org-babel functions for lfe evaluation
 
 ;; Copyright (C) 2015 ZHOU Feng
+;; Copyright (C) 2016 Eric Bailey
 
 ;; Author: ZHOU Feng <zf.pascal@gmail.com>
 ;; URL: http://github.com/zweifisch/ob-lfe
@@ -53,7 +54,9 @@
 (defun ob-lfe-ensure-session (session)
   (unless (org-babel-comint-buffer-livep (format "*lfe-%s*" session))
     (with-current-buffer (apply 'make-comint (format "lfe-%s" session) "env" nil
-                                "lfe" "-env" "TERM" "vt100" "-pa" "ebin" (file-expand-wildcards "deps/*/ebin"))
+                                "lfe" "-env" "TERM" "vt100"
+                                "-pa" (file-expand-wildcards
+                                       "_build/default/lib/*/ebin"))
       (setq comint-process-echoes t))
     (ob-lfe-eval-in-repl session "")
     (sleep-for 0 500)))
